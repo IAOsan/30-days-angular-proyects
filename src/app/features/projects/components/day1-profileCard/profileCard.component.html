@@ -1,0 +1,45 @@
+<main class="bg-warning-200 mh-100vh w-100">
+  <article class="wrapper pt-6 pr-5 pb-6 pl-5 bg-light-50 rounded-2 shadow-1">
+    <h1 class="heading-3 mb-3 text-center"><b>Profile Card</b></h1>
+    <div>
+      <p class="word-wrap-break-word">
+        <b>Name:</b>
+        <span
+          [class]="{
+            'text-dark-200': !profile.name
+          }"
+        >
+          {{
+            (profile.name | capitalize : "all words") || "-- Undefined Name --"
+          }}
+        </span>
+      </p>
+      <p>
+        <b>Age:</b>
+        <span
+          [class]="{
+            'text-dark-200': !profile.age
+          }"
+          >{{ profile.age || "-- Age not available --" }}</span
+        >
+      </p>
+      <p class="word-wrap-break-word">
+        <b>Description:</b>
+        <span
+          [class]="{
+            'text-dark-200': !profile.description
+          }"
+        >
+          {{
+            (profile.description | capitalize : "first word") ||
+              "-- No Description Yet --"
+          }}
+        </span>
+      </p>
+    </div>
+    <app-profile-form
+      [profile]="profile"
+      [onAgeChange]="handleAgeChange.bind(this)"
+    />
+  </article>
+</main>

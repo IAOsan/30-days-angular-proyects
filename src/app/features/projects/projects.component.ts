@@ -9,7 +9,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { ProjectService } from './project.service';
-import { ProjectNotFoundComponent } from './projectNotFound/projectNotFound.component';
+import { ProjectNotFoundComponent } from './components/projectNotFound/projectNotFound.component';
 
 @Component({
   selector: 'app-projects',

@@ -16,11 +16,7 @@
     <ul class="grid">
       @for (p of projects; track p.day) {
       <li class="col-md-6 col-lg-4">
-        <app-project-card
-          [day]="p.day"
-          [name]="p.name"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF9W9vwDNn5X7zAVeDHXgUKo0nBy0pqCaDcw&s"
-        />
+        <app-project-card [day]="p.day" [name]="p.name" [image]="p.image" />
       </li>
       }
     </ul>
