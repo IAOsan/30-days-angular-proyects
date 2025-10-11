@@ -1,0 +1,41 @@
+<form #form="ngForm">
+  <fieldset class="pt-4 pb-4 pl-3 pr-3 mt-4">
+    <legend class="heading-6 mt-3 mb-3 pl-2 pr-3"><b>Update Profile</b></legend>
+    <div class="mb-4">
+      <input
+        class="form__control"
+        type="text"
+        name="name"
+        id="nameInput"
+        placeholder="Enter Your Name"
+        autocomplete="off"
+        [(ngModel)]="profile.name"
+      />
+    </div>
+    <div class="mb-4">
+      <input
+        class="form__control"
+        type="number"
+        name="age"
+        id="ageInput"
+        placeholder="Enter Your Age"
+        min="1"
+        max="101"
+        autocomplete="off"
+        [(ngModel)]="profile.age"
+        (ngModelChange)="onAgeChange($event)"
+      />
+    </div>
+    <div class="mb-4">
+      <input
+        class="form__control"
+        type="text"
+        name="description"
+        id="descInput"
+        placeholder="Enter Your Description"
+        autocomplete="off"
+        [(ngModel)]="profile.description"
+      />
+    </div>
+  </fieldset>
+</form>
