@@ -1,0 +1,29 @@
+<main class="pt-6 pb-6 mh-100vh bg-primary-50">
+  <h1
+    class="heading heading-1 text-center mx-auto mb-5 mt-3 lineheight-sm text-primary-700"
+  >
+    30 days of
+    <span class="text-secondary-500">Angular </span>
+    projects
+  </h1>
+  <div class="container mb-5">
+    @if (!projects.length) {
+    <p class="heading-5 text-center text-primary-300">
+      <span class="d-block" style="font-family: monospace">=＾● ⋏ ●＾=</span>
+      <b>There are no projects yet.</b>
+    </p>
+    }@else {
+    <ul class="grid">
+      @for (p of projects; track p.day) {
+      <li class="col-md-6 col-lg-4">
+        <app-project-card
+          [day]="p.day"
+          [name]="p.name"
+          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF9W9vwDNn5X7zAVeDHXgUKo0nBy0pqCaDcw&s"
+        />
+      </li>
+      }
+    </ul>
+    }
+  </div>
+</main>

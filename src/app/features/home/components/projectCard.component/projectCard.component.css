@@ -1,0 +1,8 @@
+.wrapper {
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--transition-time) ease, transform var(--transition-time) ease;
+}
+.wrapper:hover {
+  box-shadow: var(--shadow-2);
+  transform: scale(1.010);
+}
