@@ -10,4 +10,10 @@ export class CounterComponent {
   handleCounterIncrement(): void {
     this.count = this.count + 1;
   }
+
+  handleCounterDecrement(): void {
+    if (this.count === 0) return;
+
+    this.count = this.count - 1;
+  }
 }

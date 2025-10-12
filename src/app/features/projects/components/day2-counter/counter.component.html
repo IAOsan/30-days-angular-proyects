@@ -13,7 +13,7 @@
       >
         <b>Increment</b>
       </button>
-      <button class="button button--light shadow-1" type="button">
+      <button (click)="handleCounterDecrement()" class="button button--light shadow-1" type="button" [disabled]="count === 0">
         <b>Decrement</b>
       </button>
     </div>
