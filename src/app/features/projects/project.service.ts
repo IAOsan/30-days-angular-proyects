@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IProject } from '../../shared/models/project.model';
 import { ProfileCardComponent } from './components/day1-profileCard/profileCard.component';
+import { CounterComponent } from './components/day2-counter/counter.component';
 
 const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
   [
@@ -10,6 +11,15 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
       day: 1,
       image: 'images/profile-card.png',
       component: ProfileCardComponent,
+    },
+  ],
+  [
+    2,
+    {
+      name: 'Counter',
+      day: 2,
+      image: 'images/counter.png',
+      component: CounterComponent,
     },
   ],
 ]);
