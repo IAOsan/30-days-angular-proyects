@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
 })
 export class CounterComponent {
   count: number = 0;
+
+  handleCounterIncrement(): void {
+    this.count = this.count + 1;
+  }
 }
