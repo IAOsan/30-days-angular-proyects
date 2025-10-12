@@ -219,7 +219,8 @@ img {
   flex-flow: row wrap;
   margin: calc((var(--space-5) * -1) / 2);
 }
-[class*="col"] {
+.grid [class^="col-"],
+.grid [class*=" col-"] {
   padding: calc(var(--space-5) / 2);
   flex-grow: 0;
   flex-shrink: 0;
