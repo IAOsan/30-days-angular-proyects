@@ -1,0 +1,13 @@
+<article class="">
+  <header>
+    <small class="d-block text-right text-dark-300">
+      {{ createdAt | timeAgo }}
+    </small>
+  </header>
+  <p class="mr-4 text-justify">
+    {{ description }}
+  </p>
+  <footer class="pt-5">
+    <button (click)="emitTaskDeleted()" class="button button--danger"><b>Remove</b></button>
+  </footer>
+</article>

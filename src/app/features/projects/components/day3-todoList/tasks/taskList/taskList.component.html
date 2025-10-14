@@ -1,0 +1,13 @@
+@if (!tasks.length) {
+<p class="heading-6 text-center text-dark-300 pt-6 pb-6">
+  No tasks available, add a new task!
+</p>
+}@else {
+<ul class="d-flex flex-column gap">
+  @for (t of tasks; track t.id) {
+  <li class="pt-4 pb-4 pr-4 pl-4 border-dark-100 rounded-1">
+    <app-task [id]="t.id" [description]="t.description" [createdAt]="t.createdAt" (taskDeleted)="onDeleteTask($event)"  />
+  </li>
+  }
+</ul>
+}
