@@ -9,4 +9,5 @@ import { TaskComponent } from '../task/task.component';
 })
 export class TaskListComponent {
   @Input({ required: true }) tasks!: ITask[];
+  @Input({ required: true }) onDeleteTask!: (taskId: ITask['id']) => void;
 }

@@ -29,4 +29,14 @@ export class TodoListComponent implements OnInit {
     this.loadTasks();
     form.reset();
   }
+
+  handleDeleteTask(taskId: ITask['id']): void {
+    const confirm = window.confirm(
+      'Are you sure you want to delete this task?'
+    );
+
+    if (!confirm) return;
+
+    this.tasks = this.taskService.deleteTaskById(taskId);
+  }
 }

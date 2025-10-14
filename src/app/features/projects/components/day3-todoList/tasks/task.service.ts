@@ -20,6 +20,12 @@ export class TaskService {
     };
 
     this.tasks = [...this.tasks, newTask];
-    console.log(this.tasks)
+    console.log(this.tasks);
+  }
+
+  deleteTaskById(taskId: ITask['id']): ITask[] {
+    this.tasks = this.tasks.filter((t) => t.id !== taskId);
+
+    return this.tasks;
   }
 }

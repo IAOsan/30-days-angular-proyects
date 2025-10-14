@@ -4,6 +4,6 @@
   <article class="wrapper bg-light-50 pt-6 pb-6 pl-6 pr-6 rounded-2 shadow-1">
     <h1 class="heading-3 text-center mb-4">To-do List</h1>
     <app-new-task-form [onNewTask]="handleAddNewTask.bind(this)" />
-    <app-task-list [tasks]="tasks" />
+    <app-task-list [tasks]="tasks" [onDeleteTask]="handleDeleteTask.bind(this)" />
   </article>
 </main>
