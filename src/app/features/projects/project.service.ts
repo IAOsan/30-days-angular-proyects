@@ -3,6 +3,7 @@ import { IProject } from '../../shared/models/project.model';
 import { ProfileCardComponent } from './components/day1-profileCard/profileCard.component';
 import { CounterComponent } from './components/day2-counter/counter.component';
 import { TodoListComponent } from './components/day3-todoList/todoList.component';
+import { StopwatchComponent } from './components/day4-stopwatch/stopwatch.component';
 
 const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
   [
@@ -30,6 +31,15 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
       day: 3,
       image: 'images/todo.png',
       component: TodoListComponent,
+    },
+  ],
+  [
+   4,
+    {
+      name: 'Stopwatch',
+      day: 4,
+      image: 'images/stopwatch.png',
+      component: StopwatchComponent,
     },
   ],
 ]);
