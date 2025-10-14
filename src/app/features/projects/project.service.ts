@@ -28,7 +28,7 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
     {
       name: 'Todo List',
       day: 3,
-      image: 'images/counter.png',
+      image: 'images/todo.png',
       component: TodoListComponent,
     },
   ],

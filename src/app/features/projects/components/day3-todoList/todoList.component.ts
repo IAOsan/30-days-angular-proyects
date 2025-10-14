@@ -21,6 +21,8 @@ export class TodoListComponent implements OnInit {
   }
 
   handleAddNewTask(form: NgForm): void {
+    if (form.invalid) return;
+
     this.tasks = this.taskService.addNewTask(form.value);
     form.reset();
   }
