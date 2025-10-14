@@ -3,20 +3,7 @@
 >
   <article class="wrapper bg-light-50 pt-6 pb-6 pl-6 pr-6 rounded-2 shadow-1">
     <h1 class="heading-3 text-center mb-4">To-do List</h1>
-    <form class="mb-6">
-      <input
-        type="text"
-        name="description"
-        id="descriptionInput"
-        class="form__control mb-3"
-        placeholder="Add your task"
-      />
-      <button type="submit" class="button button--danger">
-        <b>Add task</b>
-      </button>
-    </form>
-    <p class="heading-6 text-center text-dark-300 pt-6 pb-6">
-      No tasks available, add a new task!
-    </p>
+    <app-new-task-form [onNewTask]="handleAddNewTask.bind(this)" />
+    <app-task-list [tasks]="tasks" />
   </article>
 </main>

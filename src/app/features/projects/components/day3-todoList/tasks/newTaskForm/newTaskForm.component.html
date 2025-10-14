@@ -1,0 +1,16 @@
+<form #form="ngForm" class="mb-6" (ngSubmit)="onNewTask(form)">
+  <input
+    type="text"
+    name="description"
+    id="descriptionInput"
+    class="form__control mb-3"
+    placeholder="Add your task"
+    ngModel
+    required
+    minlength="10"
+    #description="ngModel"
+  />
+  <button type="submit" class="button button--danger" [disabled]="form.invalid">
+    <b>Add task</b>
+  </button>
+</form>
