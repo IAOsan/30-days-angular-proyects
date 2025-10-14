@@ -17,16 +17,11 @@ export class TodoListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.loadTasks();
-  }
-
-  loadTasks(): void {
     this.tasks = this.taskService.getAllTasks();
   }
 
   handleAddNewTask(form: NgForm): void {
-    this.taskService.addNewTask(form.value);
-    this.loadTasks();
+    this.tasks = this.taskService.addNewTask(form.value);
     form.reset();
   }
 

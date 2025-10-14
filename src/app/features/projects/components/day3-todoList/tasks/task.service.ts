@@ -11,7 +11,7 @@ export class TaskService {
     return this.tasks;
   }
 
-  addNewTask(task: Pick<ITask, 'description'>): void {
+  addNewTask(task: Pick<ITask, 'description'>): ITask[] {
     const newTask: ITask = {
       ...task,
       completed: false,
@@ -20,7 +20,8 @@ export class TaskService {
     };
 
     this.tasks = [...this.tasks, newTask];
-    console.log(this.tasks);
+
+    return this.tasks;
   }
 
   deleteTaskById(taskId: ITask['id']): ITask[] {
