@@ -8,7 +8,7 @@ import { Component, OnDestroy } from '@angular/core';
 })
 export class StopwatchComponent implements OnDestroy {
   protected time = 0;
-  protected status: 'idle' | 'running' | 'paused' | 'reset' = 'idle';
+  protected status: 'idle' | 'running' | 'paused' = 'idle';
   intervalID: number | undefined;
 
   generateMilliseconds(): number {
@@ -43,11 +43,17 @@ export class StopwatchComponent implements OnDestroy {
       this.status = 'paused';
       return clearInterval(this.intervalID);
     }
-    
+
     this.status = 'running';
     this.intervalID = setInterval(() => {
       this.time += 50;
     }, 50);
+  }
+
+  handleReset(): void {
+    this.time = 0;
+    this.status = 'idle';
+    clearInterval(this.intervalID);
   }
 
   ngOnDestroy(): void {
