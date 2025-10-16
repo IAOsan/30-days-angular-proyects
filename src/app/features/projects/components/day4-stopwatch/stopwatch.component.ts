@@ -9,28 +9,28 @@ import { Component, OnDestroy } from '@angular/core';
 export class StopwatchComponent implements OnDestroy {
   protected time = 0;
   protected status: 'idle' | 'running' | 'paused' = 'idle';
-  intervalID: number | undefined;
+  private intervalID: number | undefined;
 
-  generateMilliseconds(): number {
+  private generateMilliseconds(): number {
     const ms = this.time % 1000;
     return Math.trunc(ms / 10);
   }
 
-  generateSeconds(): number {
+  private generateSeconds(): number {
     return Math.trunc((this.time / 1000) % 60);
   }
 
-  generateMinutes(): number {
+  private generateMinutes(): number {
     return Math.trunc(this.time / 1000 / 60);
   }
 
-  padTimeTwoDigits(time: number): string {
+  private padTimeTwoDigits(time: number): string {
     const timeStr = time.toString();
 
     return timeStr.length < 2 ? `0${timeStr}` : timeStr;
   }
 
-  getFormattedTime(): string {
+  protected get formattedTime(): string {
     const milliseconds = this.padTimeTwoDigits(this.generateMilliseconds());
     const seconds = this.padTimeTwoDigits(this.generateSeconds());
     const minutes = this.padTimeTwoDigits(this.generateMinutes());
@@ -38,7 +38,7 @@ export class StopwatchComponent implements OnDestroy {
     return `${minutes} : ${seconds} : ${milliseconds}`;
   }
 
-  handleStart(): void {
+  protected handleStart(): void {
     if (this.status === 'running') {
       this.status = 'paused';
       return clearInterval(this.intervalID);
@@ -50,7 +50,7 @@ export class StopwatchComponent implements OnDestroy {
     }, 50);
   }
 
-  handleReset(): void {
+  protected handleReset(): void {
     this.time = 0;
     this.status = 'idle';
     clearInterval(this.intervalID);
