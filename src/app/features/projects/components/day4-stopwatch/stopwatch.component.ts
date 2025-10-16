@@ -39,6 +39,11 @@ export class StopwatchComponent implements OnDestroy {
   }
 
   handleStart() {
+    if (this.status === 'running') {
+      this.status = 'paused';
+      return clearInterval(this.intervalID);
+    }
+    
     this.status = 'running';
     this.intervalID = setInterval(() => {
       this.time += 50;

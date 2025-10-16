@@ -15,10 +15,14 @@
       </button>
       <button
         (click)="handleStart()"
-        class="button button--danger w-100"
+        class="button w-100"
+        [ngClass]="{
+          'button--warning': status === 'running',
+          'button--danger': status === 'idle' || status === 'paused'
+        }"
         type="button"
       >
-        <b>Start</b>
+        <b>{{ status === 'idle' || status === 'paused' ? "Start" : "Stop" }}</b>
       </button>
     </div>
   </article>
