@@ -1,0 +1,30 @@
+<main
+  class="bg-primary-500 d-flex flex-column align-items-center justify-content-center pt-6 pb-6 w-100 mh-100vh"
+>
+  <article class="pt-6 pb-6 pl-6 pr-6 bg-light-50 rounded-3 shadow-1">
+    <p class="heading-1 mb-2">
+      <b>{{ formattedTime }}</b>
+    </p>
+    <div class="d-flex gap">
+      <button
+        (click)="handleReset()"
+        [disabled]="status === 'idle'"
+        class="button button--light w-100"
+        type="button"
+      >
+        <b>Reset</b>
+      </button>
+      <button
+        (click)="handleStart()"
+        class="button w-100"
+        [ngClass]="{
+          'button--warning': status === 'running',
+          'button--danger': status === 'idle' || status === 'paused'
+        }"
+        type="button"
+      >
+        <b>{{ status === 'idle' || status === 'paused' ? "Start" : "Stop" }}</b>
+      </button>
+    </div>
+  </article>
+</main>
