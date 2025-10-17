@@ -712,6 +712,9 @@ img {
 .gap {
   gap: var(--space-5);
 }
+.gap--sm {
+  gap: var(--space-3);
+}
 
 .image-wrapper {
   background-color: var(--c-light-600);
@@ -1145,6 +1148,9 @@ img {
 
 .w-100 {
   width: 100%;
+}
+.w-50 {
+  width: 50%;
 }
 .h-100 {
   height: 100%;
