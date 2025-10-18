@@ -10,11 +10,12 @@ const MAX_ATTEMPTS = 10;
 @Component({
   selector: 'app-guess-number',
   templateUrl: './guessNumber.component.html',
+  styleUrl: './guessNumber.component.css',
   imports: [FormsModule, NgClass, CapitalizePipe],
 })
 export class GuessNumberComponent {
   protected numberToGuess = this.generateRandomNumber();
-  protected status: 'idle' | 'failed' | 'win' = 'idle';
+  protected status: 'idle' | 'failed' | 'win' | 'loose' = 'idle';
   protected message = '';
   protected guessedNumberStatus = '';
   protected attempts = MAX_ATTEMPTS;
@@ -37,6 +38,13 @@ export class GuessNumberComponent {
 
     if (guessedNumber < MIN_NUMBER) return;
 
+    if (this.attempts === 1) {
+      this.guessedNumberStatus = 'Nice try.'
+      this.message = `The number was ${this.numberToGuess} but you ran out of attempts.`;
+      this.status = 'loose';
+      return;
+    }
+
     if (guessedNumber !== this.numberToGuess) {
       const isLowerGuess = guessedNumber < this.numberToGuess;
       this.guessedNumberStatus = isLowerGuess
@@ -48,11 +56,19 @@ export class GuessNumberComponent {
       this.status = 'failed';
       this.attempts--;
     }
+
+    if (guessedNumber === this.numberToGuess) {
+      this.guessedNumberStatus = 'Congratulations.';
+      this.message = `Your number was ${
+        this.numberToGuess
+      } and you guessed it in ${MAX_ATTEMPTS - this.attempts} attemps.`;
+      this.status = 'win';
+    }
   }
 
   protected handleGuessedNumberChange(): void {
-    this.status = 'idle';
     this.guessedNumberStatus = '';
     this.message = '';
+    this.status = 'idle';
   }
 }
