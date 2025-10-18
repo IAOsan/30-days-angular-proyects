@@ -37,10 +37,10 @@
         </button>
       </form>
       <p class="text-center text-dark-400">Attempts left: {{ attempts }}</p>
-      <p class="text-center text-dark-400">Guessed numbers are: 0</p>
+      <p class="text-center text-dark-400">Guessed numbers are: {{guessedNumbers}}</p>
     </div>
     } @else {
-    <button class="button button--info mx-auto d-block mb-6" type="button">
+    <button (click)="handleReset()" class="button button--info mx-auto d-block mb-6" type="button">
       <b>Play again</b>
     </button>
     } @if (status === 'failed' || status === 'win' || status === 'loose') {

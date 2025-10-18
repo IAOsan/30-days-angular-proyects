@@ -19,6 +19,7 @@ export class GuessNumberComponent {
   protected message = '';
   protected guessedNumberStatus = '';
   protected attempts = MAX_ATTEMPTS;
+  protected guessedNumbers = 0;
 
   protected get minNumber(): number {
     return MIN_NUMBER;
@@ -39,7 +40,7 @@ export class GuessNumberComponent {
     if (guessedNumber < MIN_NUMBER) return;
 
     if (this.attempts === 1) {
-      this.guessedNumberStatus = 'Nice try.'
+      this.guessedNumberStatus = 'Nice try.';
       this.message = `The number was ${this.numberToGuess} but you ran out of attempts.`;
       this.status = 'loose';
       return;
@@ -70,5 +71,15 @@ export class GuessNumberComponent {
     this.guessedNumberStatus = '';
     this.message = '';
     this.status = 'idle';
+  }
+
+  protected handleReset(): void {
+    if (this.status === 'win') this.guessedNumbers++;
+
+    this.numberToGuess = this.generateRandomNumber();
+    this.guessedNumberStatus = '';
+    this.message = '';
+    this.status = 'idle';
+    this.attempts = MAX_ATTEMPTS;
   }
 }
