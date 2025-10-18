@@ -1,17 +1,48 @@
 <main
   class="bg-danger-400 pt-6 pb-6 d-flex flex-column align-items-center justify-content-center w-100 mh-100vh"
 >
-    <div class="bg-light-50 shadow-1 rounded-3 pt-6 pb-6 pl-6 pr-6">
-        <p class="heading-6 mt-6 ml-6 mr-6 pt-4 text-center text-dark-400"><b>I am thinking a number between 1-100.</b></p>
-        <p class="heading-6 text-center text-dark-400"><b>Can you guess it?</b></p>
-        <form class="d-flex gap gap--sm mx-auto mt-6 mb-6 w-50">
-            <input type="number" name="number" id="numberInput" class="form__control text-center">
-            <button class="button button--info" type="submit">
-                <b>Guess</b>
-            </button>
-        </form>
-        <p class="text-center text-dark-400">Attempts left: 10</p>
-        <p class="mb-6 pb-6 text-center text-dark-400">Guessed numbers are: 0</p>
-    </div>
+  <div class="bg-light-50 shadow-1 rounded-3 pt-6 pb-6 pl-6 pr-6">
+    <p class="heading-6 mt-6 ml-6 mr-6 pt-4 text-center text-dark-400">
+      <b>I am thinking a number between 1-100.</b>
+    </p>
+    <p class="heading-6 text-center text-dark-400"><b>Can you guess it?</b></p>
+    <form
+      #form="ngForm"
+      (ngSubmit)="handleSubmit(form)"
+      class="d-flex gap gap--sm mx-auto mt-6 mb-6 w-50"
+    >
+      <input
+        (input)="handleGuessedNumberChange()"
+        type="number"
+        name="guessedNumber"
+        id="numberInput"
+        class="form__control text-center"
+        [min]="minNumber"
+        [max]="maxNumber"
+        ngModel
+        required
+        min="1"
+        max="100"
+      />
+      <button
+        class="button button--info"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        <b>Guess</b>
+      </button>
+    </form>
+    <p class="text-center text-dark-400">Attempts left: {{ attempts }}</p>
+    <p class="mb-6 pb-6 text-center text-dark-400">Guessed numbers are: 0</p>
+    @if (status === 'failed' || status === 'win') {
+    <p
+      class="d-block pt-4 pb-4 pl-4 pr-4 rounded-2"
+      [ngClass]="{
+        'bg-danger-50 text-danger-700': status === 'failed',
+      }"
+    >
+      <b>{{ guessedNumberStatus | capitalize }}</b> {{ message }}
+    </p>
+    }
+  </div>
 </main>
-
