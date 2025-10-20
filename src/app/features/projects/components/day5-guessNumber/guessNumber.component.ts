@@ -1,85 +1,118 @@
-import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { CapitalizePipe } from '../../../../shared/pipes/capitalize.pipe';
+import { GuessCounterComponent } from './guessCounter/guessCounter.component';
+import { GuessFeedback } from './guessFeedback/guessFeedback.component';
+import { GuessFormComponent } from './guessForm/guessForm.component';
+import { HeaderComponent } from './header/header.component';
 
-const MIN_NUMBER = 1;
-const MAX_NUMBER = 100;
+const MIN_GUESS_VALUE = 1;
+const MAX_GUESS_VALUE = 100;
 const MAX_ATTEMPTS = 10;
+
+type StatusType = 'idle' | 'failed' | 'won' | 'lost';
 
 @Component({
   selector: 'app-guess-number',
   templateUrl: './guessNumber.component.html',
   styleUrl: './guessNumber.component.css',
-  imports: [FormsModule, NgClass, CapitalizePipe],
+  imports: [
+    FormsModule,
+    GuessFormComponent,
+    HeaderComponent,
+    GuessCounterComponent,
+    GuessFeedback,
+  ],
 })
 export class GuessNumberComponent {
   protected numberToGuess = this.generateRandomNumber();
-  protected status: 'idle' | 'failed' | 'win' | 'loose' = 'idle';
-  protected message = '';
-  protected guessedNumberStatus = '';
   protected attempts = MAX_ATTEMPTS;
+  protected status: StatusType = 'idle';
   protected guessedNumbers = 0;
+  protected feedback = {
+    status: '',
+    message: '',
+  };
 
-  protected get minNumber(): number {
-    return MIN_NUMBER;
+  protected get minGuessValue(): number {
+    return MIN_GUESS_VALUE;
   }
 
-  protected get maxNumber(): number {
-    return MAX_NUMBER;
+  protected get maxGuessValue(): number {
+    return MAX_GUESS_VALUE;
   }
 
   private generateRandomNumber(): number {
-    const randomNumber = Math.random() * (MAX_NUMBER - MIN_NUMBER) + MIN_NUMBER;
+    const randomNumber =
+      Math.random() * (MAX_GUESS_VALUE - MIN_GUESS_VALUE) + MIN_GUESS_VALUE;
     return Math.trunc(randomNumber);
   }
 
-  protected handleSubmit(form: NgForm) {
+  private handleGameLost(): void {
+    this.feedback.status = 'Nice try.';
+    this.feedback.message = `The number was ${this.numberToGuess} but you ran out of attempts.`;
+    this.status = 'lost';
+  }
+
+  private handleGameWon(): void {
+    this.feedback.status = 'Congratulations.';
+    this.feedback.message = `Your number was ${
+      this.numberToGuess
+    } and you guessed it in ${this.getAttemptsToWin()} attempts.`;
+    this.status = 'won';
+  }
+
+  private handleIncorrectGuess(guessedNumber: number): void {
+    const isLowerGuess = guessedNumber < this.numberToGuess;
+
+    this.feedback.status = isLowerGuess
+      ? 'You came up short.'
+      : 'You overshot it';
+    this.feedback.message = isLowerGuess
+      ? 'Try something bigger.'
+      : 'Try something smaller.';
+    this.status = 'failed';
+    this.attempts--;
+  }
+
+  protected handleSubmit(form: NgForm): void {
     const { guessedNumber } = form.value;
+    const isGuessOutOfRange =
+      guessedNumber < MIN_GUESS_VALUE || guessedNumber > MAX_GUESS_VALUE;
 
-    if (guessedNumber < MIN_NUMBER) return;
+    if (isGuessOutOfRange) return;
 
-    if (this.attempts === 1) {
-      this.guessedNumberStatus = 'Nice try.';
-      this.message = `The number was ${this.numberToGuess} but you ran out of attempts.`;
-      this.status = 'loose';
-      return;
-    }
-
-    if (guessedNumber !== this.numberToGuess) {
-      const isLowerGuess = guessedNumber < this.numberToGuess;
-      this.guessedNumberStatus = isLowerGuess
-        ? 'You came up short.'
-        : 'You overshot it';
-      this.message = isLowerGuess
-        ? 'Try something bigger.'
-        : 'Try something smaller.';
-      this.status = 'failed';
-      this.attempts--;
-    }
+    if (this.attempts === MIN_GUESS_VALUE) return this.handleGameLost();
 
     if (guessedNumber === this.numberToGuess) {
-      this.guessedNumberStatus = 'Congratulations.';
-      this.message = `Your number was ${
-        this.numberToGuess
-      } and you guessed it in ${MAX_ATTEMPTS - this.attempts} attemps.`;
-      this.status = 'win';
+      this.handleGameWon();
+    } else {
+      this.handleIncorrectGuess(guessedNumber);
     }
+  }
+
+  private getAttemptsToWin(): number {
+    return MAX_ATTEMPTS - this.attempts;
+  }
+
+  private clearFeedback(): void {
+    this.feedback.status = '';
+    this.feedback.message = '';
+    this.status = 'idle';
   }
 
   protected handleGuessedNumberChange(): void {
-    this.guessedNumberStatus = '';
-    this.message = '';
-    this.status = 'idle';
+    this.clearFeedback();
   }
 
-  protected handleReset(): void {
-    if (this.status === 'win') this.guessedNumbers++;
-
+  private restartGame() {
     this.numberToGuess = this.generateRandomNumber();
-    this.guessedNumberStatus = '';
-    this.message = '';
-    this.status = 'idle';
+    this.clearFeedback();
     this.attempts = MAX_ATTEMPTS;
+  }
+
+  protected handleResetGame(): void {
+    if (this.status === 'won') this.guessedNumbers++;
+
+    this.restartGame();
   }
 }
