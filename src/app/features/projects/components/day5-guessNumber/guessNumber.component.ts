@@ -1,9 +1,7 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { GuessCounterComponent } from './guessCounter/guessCounter.component';
-import { GuessFeedback } from './guessFeedback/guessFeedback.component';
-import { GuessFormComponent } from './guessForm/guessForm.component';
-import { HeaderComponent } from './header/header.component';
+import { CapitalizePipe } from '../../../../shared/pipes/capitalize.pipe';
 
 const MIN_GUESS_VALUE = 1;
 const MAX_GUESS_VALUE = 100;
@@ -15,13 +13,7 @@ type StatusType = 'idle' | 'failed' | 'won' | 'lost';
   selector: 'app-guess-number',
   templateUrl: './guessNumber.component.html',
   styleUrl: './guessNumber.component.css',
-  imports: [
-    FormsModule,
-    GuessFormComponent,
-    HeaderComponent,
-    GuessCounterComponent,
-    GuessFeedback,
-  ],
+  imports: [FormsModule, NgClass, CapitalizePipe],
 })
 export class GuessNumberComponent {
   protected numberToGuess = this.generateRandomNumber();

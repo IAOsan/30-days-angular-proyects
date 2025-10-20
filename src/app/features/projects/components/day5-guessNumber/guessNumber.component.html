@@ -1,8 +1,10 @@
 <main
   class="bg-danger-400 pt-6 pb-6 d-flex flex-column align-items-center justify-content-center w-100 mh-100vh"
 >
-  <div class="wrapper d-flex flex-column justify-content-center bg-light-50 shadow-1 rounded-3 pt-6 pb-6 pl-6 pr-6 pos-relative">
-    @if (status !== 'win' && status !== 'loose') {
+  <div
+    class="wrapper d-flex flex-column justify-content-center bg-light-50 shadow-1 rounded-3 pt-6 pb-6 pl-6 pr-6 pos-relative"
+  >
+    @if (status !== 'won' && status !== 'lost') {
     <div>
       <p class="heading-6 text-center text-dark-400">
         <b>I am thinking a number between 1-100.</b>
@@ -21,8 +23,8 @@
           name="guessedNumber"
           id="numberInput"
           class="form__control text-center"
-          [min]="minNumber"
-          [max]="maxNumber"
+          [min]="minGuessValue"
+          [max]="maxGuessValue"
           ngModel
           required
           min="1"
@@ -37,21 +39,27 @@
         </button>
       </form>
       <p class="text-center text-dark-400">Attempts left: {{ attempts }}</p>
-      <p class="text-center text-dark-400">Guessed numbers are: {{guessedNumbers}}</p>
+      <p class="text-center text-dark-400">
+        Guessed numbers are: {{ guessedNumbers }}
+      </p>
     </div>
     } @else {
-    <button (click)="handleReset()" class="button button--info mx-auto d-block mb-6" type="button">
+    <button
+      (click)="handleResetGame()"
+      class="button button--info mx-auto d-block mb-6"
+      type="button"
+    >
       <b>Play again</b>
     </button>
-    } @if (status === 'failed' || status === 'win' || status === 'loose') {
+    } @if (status === 'failed' || status === 'won' || status === 'lost') {
     <p
-      class="d-block pt-4 pb-4 pl-4 pr-4 rounded-2 pos-absolute bottom-0 left-0 right-0 ml-5 mr-5  mb-5"
+      class="d-block pt-4 pb-4 pl-4 pr-4 rounded-2 pos-absolute bottom-0 left-0 right-0 ml-5 mr-5 mb-5"
       [ngClass]="{
-        'bg-danger-50 text-danger-700': status === 'failed' || status === 'loose',
-        'bg-success-50 text-success-700': status === 'win',
+        'bg-danger-50 text-danger-700': status === 'failed' || status === 'lost',
+        'bg-success-50 text-success-700': status === 'won',
       }"
     >
-      <b>{{ guessedNumberStatus | capitalize }}</b> {{ message }}
+      <b>{{ feedback.status | capitalize }}</b> {{ feedback.message }}
     </p>
     }
   </div>
