@@ -712,6 +712,9 @@ img {
 .gap {
   gap: var(--space-5);
 }
+.gap--sm {
+  gap: var(--space-3);
+}
 
 .image-wrapper {
   background-color: var(--c-light-600);
@@ -897,6 +900,18 @@ img {
 }
 .pos-absolute {
   position: absolute;
+}
+.left-0 {
+  left: 0;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
+}
+.bottom-0 {
+  bottom: 0;
 }
 
 .rounded-1 {
@@ -1145,6 +1160,12 @@ img {
 
 .w-100 {
   width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-75 {
+  width: 75%;
 }
 .h-100 {
   height: 100%;
