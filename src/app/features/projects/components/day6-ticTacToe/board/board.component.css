@@ -1,0 +1,10 @@
+.board {
+    max-width: 19.5rem;
+}
+.board__cell {
+    min-width: 5rem;
+    min-height: 5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
