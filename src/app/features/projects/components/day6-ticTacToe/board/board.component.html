@@ -1,21 +1,18 @@
 <div
   class="board bg-dark-500 mx-auto mb-6 pt-5 pb-5 pl-5 pr-5 rounded-2 shadow-2"
 >
-  <div class="d-flex flex-column gap-sm">
-    <div class="d-flex gap-sm">
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-    </div>
-    <div class="d-flex gap-sm">
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-    </div>
-    <div class="d-flex gap-sm">
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-      <button type="button" class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"></button>
-    </div>
+  <div class="d-flex flex-wrap gap-sm">
+    @for (cell of board; track cell.id) {
+    <button
+      (click)="emitCellClicked(cell)"
+      type="button"
+      class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"
+      [disabled]="!!cell.value"
+    >
+      @if (cell.value) {
+      <b class="heading-3 text-light-500">{{ cell.value }}</b>
+      }
+    </button>
+    }
   </div>
 </div>

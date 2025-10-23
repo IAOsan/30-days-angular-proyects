@@ -8,3 +8,6 @@
     border: none;
     outline: none;
 }
+.board__cell:disabled {
+    cursor: not-allowed;
+}

@@ -3,8 +3,8 @@
 >
   <div class="d-inline-block">
     <tic-tac-toe-score-panel />
-    <tic-tac-toe-turn-indicator />
-    <tic-tac-toe-board />
+    <tic-tac-toe-turn-indicator [currentPlayer]="currentPlayer" />
+    <tic-tac-toe-board [board]="board" (cellClicked)="handleCellClick($event)" />
     <tic-tac-toe-controls />
   </div> 
 </main>
