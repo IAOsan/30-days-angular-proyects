@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BoardCellCoordsType } from '../models/board.model';
+import { BoardCellCoordsType, IBoardCell } from '../models/board.model';
 import { IPlayer } from '../models/player.model';
 
 @Component({
@@ -8,10 +8,10 @@ import { IPlayer } from '../models/player.model';
   styleUrl: './board.component.css',
 })
 export class BoardComponent {
-  @Input({ required: true }) board!: BoardCellCoordsType[];
-  @Output() cellClicked = new EventEmitter<BoardCellCoordsType>();
+  @Input({ required: true }) board!: IBoardCell[];
+  @Output() cellClicked = new EventEmitter<IBoardCell['id']>();
 
-  emitCellClicked(cellCoords: BoardCellCoordsType): void {
-    this.cellClicked.emit(cellCoords);
+  emitCellClicked(id: IBoardCell['id']): void {
+    this.cellClicked.emit(id);
   }
 }

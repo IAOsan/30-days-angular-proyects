@@ -26,63 +26,31 @@ const BOARD_SIZE = 3;
 })
 export class TicTacToeComponent {
   protected currentPlayer: IPlayer['id'] = 'X';
-  private boardState: IBoardState = {
-    0: {
-      0: { id: 0, value: null },
-      1: { id: 1, value: null },
-      2: { id: 2, value: null },
-    },
-    1: {
-      0: { id: 0, value: null },
-      1: { id: 1, value: null },
-      2: { id: 2, value: null },
-    },
-    2: {
-      0: { id: 0, value: null },
-      1: { id: 1, value: null },
-      2: { id: 2, value: null },
-    },
-  };
+  private _boardState = new Map<number, IBoardCell>();
 
-  protected get board(): BoardCellCoordsType[] {
-    return this.mapBoardStateToScreen();
+  constructor() {
+    this.init();
   }
 
-  private mapBoardStateToScreen(): BoardCellCoordsType[] {
-    const boardCells: IBoardCell[] = Object.values(this.boardState).flatMap(
-      (row) => Object.values(row)
-    );
-
-    return boardCells.map((cell, id) => {
-      const x = Math.floor(id / BOARD_SIZE);
-      const y = cell.id;
-
-      return {
-        id,
-        x,
-        y,
-        value: cell.value,
-      };
-    });
+  private init() {
+    for (let index = 0; index < BOARD_SIZE * BOARD_SIZE; index++) {
+      this._boardState.set(index + 1, { id: index + 1, value: null });
+    }
   }
 
-  private updateBoardCell(
-    x: BoardCellCoordsType['x'],
-    y: BoardCellCoordsType['y']
-  ): void {
-    const isMarked = !!this.boardState[x][y].value;
-
-    if (isMarked) return;
-
-    this.boardState[x][y].value = this.currentPlayer;
+  protected get board(): IBoardCell[] {
+    return Array.from(this._boardState.values());
   }
 
-  private switchPlayer(currentPlayer: IPlayer['id']): void {
-    this.currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-  }
+  protected handleCellClick(cellId: IBoardCell['id']) {
+    const cellFound = this._boardState.get(cellId);
 
-  protected handleCellClick(cellCoords: BoardCellCoordsType) {
-    this.updateBoardCell(cellCoords.x, cellCoords.y);
-    this.switchPlayer(this.currentPlayer);
+    if (!cellFound || cellFound?.value) return;
+
+    this._boardState.set(cellId, { ...cellFound, value: this.currentPlayer });
+
+   
+
+    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
   }
 }

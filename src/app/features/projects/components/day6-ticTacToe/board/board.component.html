@@ -4,7 +4,7 @@
   <div class="d-flex flex-wrap gap-sm">
     @for (cell of board; track cell.id) {
     <button
-      (click)="emitCellClicked(cell)"
+      (click)="emitCellClicked(cell.id)"
       type="button"
       class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"
       [disabled]="!!cell.value"
