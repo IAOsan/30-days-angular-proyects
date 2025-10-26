@@ -8,6 +8,12 @@
     border: none;
     outline: none;
 }
+.board__cell--X {
+    color: var(--c-danger-500);
+}
+.board__cell--O {
+    color: var(--c-success-500);
+}
 .board__cell:disabled {
     cursor: not-allowed;
 }

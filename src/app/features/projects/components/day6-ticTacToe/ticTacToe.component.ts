@@ -235,4 +235,10 @@ export class TicTacToeComponent {
 
     this.handlePlay();
   }
+
+  protected handleReset(): void {
+    this.currentPlayer = 'X';
+    this.boardState = this.generateBoardState();
+    this.status = 'idle';
+  }
 }

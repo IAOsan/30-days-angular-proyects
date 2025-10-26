@@ -3,12 +3,15 @@
 >
   <div class="d-inline-block">
     <tic-tac-toe-score-panel [players]="players" />
-    <tic-tac-toe-turn-indicator [currentPlayer]="currentPlayer" [status]="status" />
+    <tic-tac-toe-turn-indicator
+      [currentPlayer]="currentPlayer"
+      [status]="status"
+    />
     <tic-tac-toe-board
       [board]="board"
       [status]="status"
       (cellClicked)="handleCellClick($event)"
     />
-    <tic-tac-toe-controls />
+    <tic-tac-toe-controls [onRestart]="handleReset.bind(this)" />
   </div>
 </main>

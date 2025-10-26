@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'tic-tac-toe-controls',
   templateUrl: './controls.component.html',
 })
-export class ControlsComponent {}
+export class ControlsComponent {
+  @Input({ required: true }) onRestart!: () => void;
+}

@@ -2,19 +2,19 @@
   <div
     class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
   >
-    <b class="">{{ players.get("X")?.id }}</b>
+    <b class="x-player">{{ players.get("X")?.id }}</b>
     <p>{{ players.get("X")?.counter }}</p>
   </div>
   <div
     class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
   >
-    <b>Ties</b>
+    <b class="text-warning-500">Ties</b>
     <p>200</p>
   </div>
   <div
     class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
   >
-    <b class="">{{ players.get("O")?.id }}</b>
+    <b class="o-player">{{ players.get("O")?.id }}</b>
     <p>{{ players.get("O")?.counter }}</p>
   </div>
 </div>

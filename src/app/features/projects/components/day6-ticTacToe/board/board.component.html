@@ -8,10 +8,14 @@
       (click)="emitCellClicked(cell.id)"
       type="button"
       class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"
+      [ngClass]="{
+        'x-player': cell.value === 'X',
+        'o-player': cell.value === 'O'
+      }"
       [disabled]="!!cell.value || status === 'won' || status === 'draw'"
     >
       @if (cell.value) {
-      <b class="heading-3 text-light-500">{{ cell.value }}</b>
+      <b class="heading-3">{{ cell.value }}</b>
       }
     </button>
     }

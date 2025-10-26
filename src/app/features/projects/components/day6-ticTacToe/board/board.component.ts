@@ -6,7 +6,7 @@ import { GameStatusType } from '../models/game.model';
 @Component({
   selector: 'tic-tac-toe-board',
   templateUrl: './board.component.html',
-  styleUrl: './board.component.css',
+  styleUrls: ['./board.component.css', '../shared/sharedStyles.css'],
   imports: [NgClass],
 })
 export class BoardComponent {
