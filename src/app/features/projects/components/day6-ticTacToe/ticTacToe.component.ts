@@ -43,7 +43,7 @@ export class TicTacToeComponent {
     ],
   ]);
   protected currentPlayer: IPlayer['id'] = 'X';
-  private _boardState = new Map<number, IBoardCell>();
+  private boardState = new Map<number, IBoardCell>();
   protected status: GameStatusType = 'idle';
 
   constructor() {
@@ -51,13 +51,19 @@ export class TicTacToeComponent {
   }
 
   private init() {
+    this.boardState = this.generateBoardState();
+  }
+
+  private generateBoardState(): Map<number, IBoardCell> {
+    const state = new Map<number, IBoardCell>();
     for (let index = 0; index < BOARD_SIZE * BOARD_SIZE; index++) {
-      this._boardState.set(index + 1, { id: index + 1, value: null });
+      state.set(index + 1, { id: index + 1, value: null });
     }
+    return state;
   }
 
   protected get board(): IBoardCell[] {
-    return Array.from(this._boardState.values());
+    return Array.from(this.boardState.values());
   }
 
   private checkHorizontalLines(
@@ -211,11 +217,11 @@ export class TicTacToeComponent {
   }
 
   private updateBoard(cellId: number, cellFound: IBoardCell): void {
-    this._boardState.set(cellId, { ...cellFound, value: this.currentPlayer });
+    this.boardState.set(cellId, { ...cellFound, value: this.currentPlayer });
   }
 
   protected handleCellClick(cellId: IBoardCell['id']): void {
-    const cellFound = this._boardState.get(cellId);
+    const cellFound = this.boardState.get(cellId);
 
     if (!cellFound || cellFound?.value) return;
 
