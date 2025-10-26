@@ -2,16 +2,10 @@ import { Component } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { ControlsComponent } from './controls/controls.component';
 import { IBoardCell } from './models/board.model';
-import { GameStatusType } from './models/game.model';
+import { GameStatusType, ScoreType } from './models/game.model';
 import { IPlayer } from './models/player.model';
 import { ScorePanelComponent } from './scorePanel/scorePanel.component';
 import { TurnIndicatorComponent } from './turnIndicator/turnIndicator.component';
-
-export type IBoardState = {
-  [row: number]: {
-    [col: number]: IBoardCell;
-  };
-};
 
 const BOARD_SIZE = 3;
 
@@ -26,21 +20,10 @@ const BOARD_SIZE = 3;
   ],
 })
 export class TicTacToeComponent {
-  protected players = new Map<IPlayer['id'], IPlayer>([
-    [
-      'X',
-      {
-        id: 'X',
-        counter: 0,
-      },
-    ],
-    [
-      'O',
-      {
-        id: 'O',
-        counter: 0,
-      },
-    ],
+  protected scores: ScoreType = new Map([
+    ['X', 0],
+    ['O', 0],
+    ['ties', 0],
   ]);
   protected currentPlayer: IPlayer['id'] = 'X';
   private boardState = new Map<number, IBoardCell>();
@@ -201,18 +184,16 @@ export class TicTacToeComponent {
   }
 
   private handleDraw(): void {
+    const currentScore = this.scores.get('ties') || 0;
+  
+    this.scores.set('ties', currentScore + 1);
     this.status = 'draw';
   }
 
   private handleWon(): void {
-    const playerStats = this.players.get(this.currentPlayer);
+    const currentScore = this.scores.get(this.currentPlayer) || 0;
 
-    if (playerStats) {
-      this.players.set(this.currentPlayer, {
-        ...playerStats,
-        counter: playerStats.counter + 1,
-      });
-    }
+    this.scores.set(this.currentPlayer, currentScore + 1);
     this.status = 'won';
   }
 
