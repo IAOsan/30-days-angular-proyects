@@ -1,0 +1,1 @@
+export type GameStatusType = 'idle' | 'playing' | 'won' | 'draw';

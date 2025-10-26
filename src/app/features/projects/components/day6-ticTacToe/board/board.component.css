@@ -11,3 +11,7 @@
 .board__cell:disabled {
     cursor: not-allowed;
 }
+.finish {
+    cursor: not-allowed;
+    opacity: 86%;
+}

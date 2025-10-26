@@ -1,14 +1,20 @@
 <div class="d-flex gap-sm mx-auto">
-  <div class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2">
-    <b class="text-danger-500">X</b>
-    <p>1</p>
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
+    <b class="">{{ players.get("X")?.id }}</b>
+    <p>{{ players.get("X")?.counter }}</p>
   </div>
-  <div class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2">
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
     <b>Ties</b>
     <p>200</p>
   </div>
-  <div class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2">
-    <b class="text-success-500">O</b>
-    <p>200</p>
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
+    <b class="">{{ players.get("O")?.id }}</b>
+    <p>{{ players.get("O")?.counter }}</p>
   </div>
 </div>

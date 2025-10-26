@@ -1,14 +1,17 @@
+import { NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BoardCellCoordsType, IBoardCell } from '../models/board.model';
-import { IPlayer } from '../models/player.model';
+import { IBoardCell } from '../models/board.model';
+import { GameStatusType } from '../models/game.model';
 
 @Component({
   selector: 'tic-tac-toe-board',
   templateUrl: './board.component.html',
   styleUrl: './board.component.css',
+  imports: [NgClass],
 })
 export class BoardComponent {
   @Input({ required: true }) board!: IBoardCell[];
+  @Input({ required: true }) status!: GameStatusType;
   @Output() cellClicked = new EventEmitter<IBoardCell['id']>();
 
   emitCellClicked(id: IBoardCell['id']): void {
