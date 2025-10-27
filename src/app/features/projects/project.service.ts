@@ -5,6 +5,7 @@ import { CounterComponent } from './components/day2-counter/counter.component';
 import { TodoListComponent } from './components/day3-todoList/todoList.component';
 import { StopwatchComponent } from './components/day4-stopwatch/stopwatch.component';
 import { GuessNumberComponent } from './components/day5-guessNumber/guessNumber.component';
+import { TicTacToeComponent } from './components/day6-ticTacToe/ticTacToe.component';
 
 const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
   [
@@ -50,6 +51,15 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
       day: 5,
       image: 'images/guess-number.png',
       component: GuessNumberComponent,
+    },
+  ],
+  [
+   6,
+    {
+      name: 'Tic tac toe',
+      day: 6,
+      image: 'images/tic-tac-toe.png',
+      component: TicTacToeComponent,
     },
   ],
 ]);

@@ -1,0 +1,20 @@
+<div class="d-flex gap-sm mx-auto">
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
+    <b class="x-player">X</b>
+    <p>{{ scores.get("X") }}</p>
+  </div>
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
+    <b class="text-warning-500">Ties</b>
+    <p>{{scores.get('ties')}}</p>
+  </div>
+  <div
+    class="bg-dark-500 text-light-500 pt-2 pb-2 text-center rounded-2 flex-grow-1 w-100 shadow-2"
+  >
+    <b class="o-player">O</b>
+    <p>{{ scores.get("O") }}</p>
+  </div>
+</div>

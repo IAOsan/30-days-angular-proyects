@@ -1,0 +1,23 @@
+.board {
+    max-width: 19.5rem;
+}
+.board__cell {
+    min-width: 5rem;
+    min-height: 5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.board__cell--X {
+    color: var(--c-danger-500);
+}
+.board__cell--O {
+    color: var(--c-success-500);
+}
+.board__cell:disabled {
+    cursor: not-allowed;
+}
+.finish {
+    cursor: not-allowed;
+    opacity: 86%;
+}

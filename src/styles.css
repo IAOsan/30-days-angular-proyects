@@ -230,6 +230,55 @@ img {
   width: 100%;
 }
 
+.col-1 {
+  flex-basis: 8.333333%;
+  max-width: 8.333333%;
+}
+.col-2 {
+  flex-basis: 16.666667%;
+  max-width: 16.666667%;
+}
+.col-3 {
+  flex-basis: 25%;
+  max-width: 25%;
+}
+.col-4 {
+  flex-basis: 33.333333%;
+  max-width: 33.333333%;
+}
+.col-5 {
+  flex-basis: 41.666667%;
+  max-width: 41.666667%;
+}
+.col-6 {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+.col-7 {
+  flex-basis: 58.333333%;
+  max-width: 58.333333%;
+}
+.col-8 {
+  flex-basis: 66.666667%;
+  max-width: 66.666667%;
+}
+.col-9 {
+  flex-basis: 75%;
+  max-width: 75%;
+}
+.col-10 {
+  flex-basis: 83.333333%;
+  max-width: 83.333333%;
+}
+.col-11 {
+  flex-basis: 91.666667%;
+  max-width: 91.666667%;
+}
+.col-12 {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
 @media (min-width: 768px) {
   .col-md-1 {
     flex-basis: 8.333333%;
@@ -339,6 +388,10 @@ img {
   outline: none;
   border-radius: var(--space-1);
   padding: var(--space-2) var(--space-5);
+}
+.button--lg {
+  padding: var(--space-3) var(--space-6);
+  font-size: 1.2em;
 }
 .button--primary {
   background-color: var(--c-primary-500);
@@ -677,6 +730,27 @@ img {
 .bg-light-50 {
   background-color: var(--c-light-50);
 }
+.bg-dark-50 {
+  background-color: var(--c-dark-50);
+}
+.bg-dark-100 {
+  background-color: var(--c-dark-100);
+}
+.bg-dark-200 {
+  background-color: var(--c-dark-200);
+}
+.bg-dark-300 {
+  background-color: var(--c-dark-300);
+}
+.bg-dark-400 {
+  background-color: var(--c-dark-400);
+}
+.bg-dark-500 {
+  background-color: var(--c-dark-500);
+}
+.bg-hover-dark-300:not(:disabled):hover {
+  background-color: var(--c-dark-300);
+}
 
 .border-dark-100 {
   border: 0.1rem solid var(--c-dark-100);
@@ -697,11 +771,23 @@ img {
 .d-block {
   display: block;
 }
+.d-inline-block {
+  display: inline-block;
+}
 .d-flex {
   display: flex;
 }
+.d-inline-flex {
+  display: inline-flex;
+}
 .flex-column {
   flex-direction: column;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .align-items-center {
   align-items: center;
@@ -712,7 +798,7 @@ img {
 .gap {
   gap: var(--space-5);
 }
-.gap--sm {
+.gap-sm {
   gap: var(--space-3);
 }
 

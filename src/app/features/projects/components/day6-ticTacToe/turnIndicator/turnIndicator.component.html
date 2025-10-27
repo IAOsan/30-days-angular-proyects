@@ -1,0 +1,9 @@
+<h2 class="heading-3 text-center mt-4 mb-4">
+  @if(status === 'draw') {
+    🫱🏽‍🫲🏽 Draw
+  } @else if(status === 'won') {
+    🎉 Player {{currentPlayer}} won
+  }@else {
+    {{ currentPlayer }}&#39;s turn
+  }
+</h2>

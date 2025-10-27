@@ -1,0 +1,23 @@
+<div
+  class="board bg-dark-500 mx-auto mb-6 pt-5 pb-5 pl-5 pr-5 rounded-2 shadow-2"
+  [ngClass]="{ finish: status === 'won' || status === 'draw' }"
+>
+  <div class="d-flex flex-wrap gap-sm">
+    @for (cell of board; track cell.id) {
+    <button
+      (click)="emitCellClicked(cell.id)"
+      type="button"
+      class="board__cell d-block bg-dark-400 bg-hover-dark-300 rounded-2"
+      [ngClass]="{
+        'x-player': cell.value === 'X',
+        'o-player': cell.value === 'O'
+      }"
+      [disabled]="!!cell.value || status === 'won' || status === 'draw'"
+    >
+      @if (cell.value) {
+      <b class="heading-3">{{ cell.value }}</b>
+      }
+    </button>
+    }
+  </div>
+</div>

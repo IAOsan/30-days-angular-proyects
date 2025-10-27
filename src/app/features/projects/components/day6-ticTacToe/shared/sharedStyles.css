@@ -1,0 +1,6 @@
+.x-player {
+    color: var(--c-danger-500);
+}
+.o-player {
+    color: var(--c-success-500);
+}
