@@ -6,6 +6,7 @@ import { TodoListComponent } from './components/day3-todoList/todoList.component
 import { StopwatchComponent } from './components/day4-stopwatch/stopwatch.component';
 import { GuessNumberComponent } from './components/day5-guessNumber/guessNumber.component';
 import { TicTacToeComponent } from './components/day6-ticTacToe/ticTacToe.component';
+import { DynamicListFilter } from './components/day7-dynamic-list-filter/dynamicListFilter.component';
 
 const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
   [
@@ -60,6 +61,15 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
       day: 6,
       image: 'images/tic-tac-toe.png',
       component: TicTacToeComponent,
+    },
+  ],
+  [
+   7,
+    {
+      name: 'Dynamic list filter',
+      day: 7,
+      image: 'images/dynamic-list.png',
+      component: DynamicListFilter,
     },
   ],
 ]);
