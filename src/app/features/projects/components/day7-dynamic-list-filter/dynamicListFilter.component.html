@@ -1,0 +1,7 @@
+<main class="pt-6 pb-6 bg-secondary-400 mh-100vh">
+  <section class="container-sm">
+    <dynamic-list-header />
+    <dynamic-list-search-bar [onSearch]="handleSearch.bind(this)" />
+    <dynamic-list-results [results]="results" />
+  </section>
+</main>
