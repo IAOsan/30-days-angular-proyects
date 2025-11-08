@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'dynamic-list-result',
-  template: 'Lorem ipsum dolor',
+  template: '{{value}}',
 })
-export class ResultComponent {}
+export class ResultComponent {
+  @Input({ required: true }) value!: string;
+}

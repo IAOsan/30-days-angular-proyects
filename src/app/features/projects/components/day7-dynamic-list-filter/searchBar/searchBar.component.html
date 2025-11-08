@@ -1,11 +1,12 @@
-<form class="mb-6">
+<form [formGroup]="searchForm" class="mb-6">
   <div>
     <input
       class="form__control shadow-1"
       type="text"
-      name="search"
       id="searchInput"
       placeholder="Search tutorials..."
+      name="query"
+      formControlName="query"
     />
   </div>
 </form>
