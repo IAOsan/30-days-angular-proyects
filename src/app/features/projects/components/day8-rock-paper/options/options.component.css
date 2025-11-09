@@ -1,0 +1,6 @@
+.option {
+    background-color: var(--c-secondary-100);
+    padding: 0;
+    width: 5.625rem;
+    height: 5.625rem;
+}

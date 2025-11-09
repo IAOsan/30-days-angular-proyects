@@ -7,6 +7,7 @@ import { StopwatchComponent } from './components/day4-stopwatch/stopwatch.compon
 import { GuessNumberComponent } from './components/day5-guessNumber/guessNumber.component';
 import { TicTacToeComponent } from './components/day6-ticTacToe/ticTacToe.component';
 import { DynamicListFilter } from './components/day7-dynamic-list-filter/dynamicListFilter.component';
+import { RockPaperComponent } from './components/day8-rock-paper/rockPaper.component';
 
 const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
   [
@@ -37,7 +38,7 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
     },
   ],
   [
-   4,
+    4,
     {
       name: 'Stopwatch',
       day: 4,
@@ -46,7 +47,7 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
     },
   ],
   [
-   5,
+    5,
     {
       name: 'Guess the number',
       day: 5,
@@ -55,7 +56,7 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
     },
   ],
   [
-   6,
+    6,
     {
       name: 'Tic tac toe',
       day: 6,
@@ -64,12 +65,21 @@ const PROJECT_COMPONENTS_MAP = new Map<number, IProject>([
     },
   ],
   [
-   7,
+    7,
     {
       name: 'Dynamic list filter',
       day: 7,
       image: 'images/dynamic-list.png',
       component: DynamicListFilter,
+    },
+  ],
+  [
+    8,
+    {
+      name: 'Rock paper scissors',
+      day: 8,
+      image: 'images/rock-paper-scissors.png',
+      component: RockPaperComponent,
     },
   ],
 ]);
