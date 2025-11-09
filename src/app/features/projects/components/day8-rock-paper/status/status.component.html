@@ -5,9 +5,9 @@
 </p>
 } @if (cpuChoice) {
 <p class="text-center mb-5">
-  Computer choose <b class="text-secondary-900">Rock</b>
+  Computer choose <b class="text-secondary-900">{{ cpuChoice | uppercase }}</b>
 </p>
-} @if(status === 'idle' && playerChoice && cpuChoice) {
+} @if(status !== 'idle' && playerChoice && cpuChoice) {
 <p
   class="text-center bg-danger-50 pt-3 pb-3 pl-4 pr-4 text-danger-900 rounded-1"
 >
