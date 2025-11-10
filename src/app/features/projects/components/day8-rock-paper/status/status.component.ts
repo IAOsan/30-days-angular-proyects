@@ -1,4 +1,4 @@
-import { UpperCasePipe } from '@angular/common';
+import { NgClass, UpperCasePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { StatusType } from '../rockPaper.component';
 
@@ -6,7 +6,7 @@ import { StatusType } from '../rockPaper.component';
   standalone: true,
   selector: 'app-rock-paper-status',
   templateUrl: './status.component.html',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, NgClass],
 })
 export class StatusComponent {
   @Input({ required: true }) playerChoice!: string | null;

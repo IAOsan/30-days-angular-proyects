@@ -48,5 +48,38 @@ describe('<RockPaperScissorsStatus />', () => {
         'Computer choose PAPER'
       );
     });
+    it('should display the proper message when playerChoice and cpuChoice has a value and status equal to won', async () => {
+      const { queryByText } = await setupRender(StatusComponent, {
+        componentProperties: {
+          playerChoice: 'paper',
+          cpuChoice: 'paper',
+          status: 'won',
+        },
+      });
+
+      expect(queryByText('YOU WON 🎉')).toBeInTheDocument();
+    });
+    it('should display the proper message when playerChoice and cpuChoice has a value and status equal to lose', async () => {
+      const { queryByText } = await setupRender(StatusComponent, {
+        componentProperties: {
+          playerChoice: 'paper',
+          cpuChoice: 'paper',
+          status: 'lose',
+        },
+      });
+
+      expect(queryByText('YOU LOSE 😢')).toBeInTheDocument();
+    });
+    it('should display the proper message when playerChoice and cpuChoice has a value and status equal to draw', async () => {
+      const { queryByText } = await setupRender(StatusComponent, {
+        componentProperties: {
+          playerChoice: 'paper',
+          cpuChoice: 'paper',
+          status: 'draw',
+        },
+      });
+
+      expect(queryByText('DRAW 🤝')).toBeInTheDocument();
+    });
   });
 });

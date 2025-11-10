@@ -1,19 +1,26 @@
 import { setupRender } from '../../../../../testing/testUtils';
 import { ScoreComponent } from './score.component';
 
+const componentProperties = {
+  playerScore: 10,
+  cpuScore: 20,
+};
+
 describe('<RockPaperScissorsScore />', () => {
   describe('Layout', () => {
-    it('should display the cpu score', async () => {
-      const { queryByText } = await setupRender(ScoreComponent);
+    it('should display the playScore properly', async () => {
+      const { queryByText } = await setupRender(ScoreComponent, {
+        componentProperties,
+      });
 
-      const $paragraph = queryByText(/^Computer.*/);
-      expect($paragraph?.textContent).toEqual('Computer: 0');
+      expect(queryByText(/^You.*/)).toHaveTextContent('You: 10');
     });
-    it('should display the player score', async () => {
-      const { queryByText } = await setupRender(ScoreComponent);
-      
-      const $paragraph = queryByText(/^You.*/);
-      expect($paragraph?.textContent).toEqual('You: 0');
+    it('should display the cpuScore properly', async () => {
+      const { queryByText } = await setupRender(ScoreComponent, {
+        componentProperties,
+      });
+
+      expect(queryByText(/^Computer.*/)).toHaveTextContent('Computer: 20');
     });
   });
 });

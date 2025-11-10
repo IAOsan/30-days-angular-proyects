@@ -13,7 +13,7 @@ const componentProperties = {
   onSelect: jest.fn(),
 };
 
-describe('<RockPaperScissor />', () => {
+describe('<RockPaperScissorOptions />', () => {
   describe('Layout', () => {
     it('should display the options with proper attributes', async () => {
       const { queryAllByRole } = await setupRender(OptionsComponent, {

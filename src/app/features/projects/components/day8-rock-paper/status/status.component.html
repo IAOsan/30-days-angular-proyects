@@ -9,8 +9,21 @@
 </p>
 } @if(status !== 'idle' && playerChoice && cpuChoice) {
 <p
-  class="text-center bg-danger-50 pt-3 pb-3 pl-4 pr-4 text-danger-900 rounded-1"
+  class="text-center pt-3 pb-3 pl-4 pr-4 rounded-1"
+  [ngClass]="{
+    'bg-success-100 text-success-900': status === 'won',
+    'bg-warning-100 text-warning-900': status === 'draw',
+    'bg-danger-100 text-danger-900': status === 'lose',
+  }"
 >
-  <b>YOU LOSE😢🎉🤝</b>
+  <b>
+    {{
+      status === "draw"
+        ? "DRAW 🤝"
+        : status === "won"
+        ? "YOU WON 🎉"
+        : "YOU LOSE 😢"
+    }}</b
+  >
 </p>
 }
